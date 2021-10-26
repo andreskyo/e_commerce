@@ -13,10 +13,23 @@ const App = () => {
     const [errorMessage, setErrorMessage] = useState('')
 
     const fetchProducts = async () => {
-        const { data } = await commerce.products.list();
-
-        setProducts(data);
+        await axios.get('http://localhost:3000/productos').then(res=>{
+            
+            setProducts(res.data)
+            console.log(res.data)
+            
+        })
     }
+    
+    Array(3) [ {…}, {…}, {…} ]
+​
+0: Object { id: 1, nombre: "remera", precio: 18000, … }
+​
+1: Object { id: 5, nombre: "pantalon", precio: 8500, … }
+​
+2: Object { id: 6, nombre: "zapatillas", precio: 12000, … }
+​
+length: 3
 
     const fetchCart = async () => {
 
